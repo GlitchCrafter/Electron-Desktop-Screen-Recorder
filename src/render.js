@@ -5,27 +5,27 @@ const stopBtn = document.getElementById('stopBtn');
 const videoSelectBtn = document.getElementById('videoSelectBtn');
 videoSelectBtn.onclick = getVideoSources;
 
-const { desktopCapturer, remote } = require('electron');
+const { desktopCapturer, remote } = Require('electron');
 const { Menu } = remote;
 
 //get the available video sources
 async function getVideoSources() {
     const inputSources = await desktopCapturer.getSources({
-        types: ['window', 'screen']
-      });
-
-    const videoOtionsMenu = Menu.buildFromTemplate(
-        inputSources.map(source => {
-            return {
-                label: source.name,
-                click: () => selectSource(source)
-            };
-        })
+      types: ['window', 'screen']
+    });
+  
+    const videoOptionsMenu = Menu.buildFromTemplate(
+      inputSources.map(source => {
+        return {
+          label: source.name,
+          click: () => selectSource(source)
+        };
+      })
     );
-
+  
+  
     videoOptionsMenu.popup();
-
-}
+  }
 
 async function selectSource(source) {
     videoSelectBtn.innerText = source.name;
