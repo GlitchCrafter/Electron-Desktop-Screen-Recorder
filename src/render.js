@@ -5,7 +5,7 @@ const stopBtn = document.getElementById('stopBtn');
 const videoSelectBtn = document.getElementById('videoSelectBtn');
 videoSelectBtn.onclick = getVideoSources;
 
-const { desktopCapturer, remote } = Require('electron');
+const { desktopCapturer, remote } = require('electron');
 const { Menu } = remote;
 
 //get the available video sources
